@@ -1,9 +1,11 @@
-import AppLayout from "../components/AppLayout";
+import {Layout} from "../components/index";
 
-function MyApp({ Component }) {
-  return <><AppLayout />
-  <Component />
-  </>
+function MyApp({ Component, pageProps}) {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  )
 }
 
 export default MyApp
