@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import style from "styles/basic/counter.module.css"
+import style from "basic/counter.module.css"
 
 export default function Counter() {
   const count = useSelector(selectCount)
