@@ -1,5 +1,6 @@
+import axios from "axios";
 import style from "board/style/board-form.module.css"
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 export default function BoardhtmlForm(){
     const [inputs, setInputs] = useState({})
@@ -8,8 +9,12 @@ export default function BoardhtmlForm(){
     
     const handleSubmit = (e) => {
         e.preventDefault()
-        alert(`등록 팀 정보 : ${teamId}`)
-                 
+        alert(`등록 팀 정보 : ${JSON.stringify(inputs)}`)
+        axios.post('http://localhost:5000/api/board/write', inputs)
+        .then(res => {
+            alert(JSON.stringify(res.data))
+        })
+        .catch(err => alert(err))       
     }
     const onChange = (e) => {
         e.preventDefault()
@@ -24,7 +29,7 @@ export default function BoardhtmlForm(){
             <htmlForm action="">
             <div className={style.row}>
                 <div className={style.col25}>
-                <label className={style.label} htmlFor="passengerId">PassengerId</label>
+                <label className={style.label} htmlFor="passengerId">작성자 ID</label>
                 </div>
                 <div className={style.col75}>
                 <input type="text" className={style.inputText}
@@ -33,7 +38,7 @@ export default function BoardhtmlForm(){
             </div>
             <div className={style.row}>
                 <div className={style.col25}>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">작성자</label>
                 </div>
                 <div className={style.col75}>
                 <input type="text" className={style.inputText}
@@ -42,7 +47,7 @@ export default function BoardhtmlForm(){
             </div>
             <div className={style.row}>
                 <div className={style.col25}>
-                <label htmlFor="team">Team</label>
+                <label htmlFor="team">팀명</label>
                 </div>
                 <div className={style.col75}>
                 <select id="teamId" name="teamId" onChange={onChange}>
@@ -54,7 +59,7 @@ export default function BoardhtmlForm(){
             </div>
             <div className={style.row}>
                 <div className={style.col25}>
-                <label htmlFor="subject">Subject</label>
+                <label htmlFor="subject">내용</label>
                 </div>
                 <div className={style.col75}>
                 <input type="textarea"  id="subject" name="subject" style={{height:200 + "px"}} onChange={onChange}></input>

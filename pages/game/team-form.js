@@ -15,6 +15,11 @@ export default function TeamForm(){
              `스타디움 명칭  : ${stadiumName } `+
              `주소 : ${address } `+
              `전화번호 : ${tel } `)
+        axios.post('http://localhost:5000/api/game/write', inputs)
+        .then(res => {
+        alert(res.data)
+        })
+        .catch(err => alert(err))
     }
     const onChange = (e) => {
         const {value, name} =e.target

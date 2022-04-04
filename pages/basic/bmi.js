@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from "axios";
 
 export default function Bmi() {
 
@@ -12,12 +13,25 @@ export default function Bmi() {
         setInputs({ ...inputs, [name]: value })
     }
 
-    const onClick = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         setResult(`${name}님의 bmi 지수는 ${(weight *10000/height/height).toFixed(2)}입니다.`)
+        alert(`BMI 지수 : ${JSON.stringify(inputs)}`)
+        axios.post('http://localhost:5000/api/basic/write', inputs)
+        .then(res => {
+            const bmi = res.data     
+            document.getElementById(`result-span`).innerHTML = `
+            <h3>이름 : ${bmi.name}</h3>
+            <h3>키 : ${bmi.height}</h3>
+            <h3>몸무게 : ${bmi.weight}</h3>
+            <h3>BMI 결과 : ${bmi.bmi}</h3>
+            `      
+            //alert(JSON.stringify(res.data))
+        })
+        .catch(err => alert(err))
     }
     return (<div>
-        <form action="">
+        <form action="" onSubmit={handleSubmit }>
             <h1>BMI</h1>
             <div>
                 <label htmlFor="">이름</label>
@@ -29,12 +43,11 @@ export default function Bmi() {
                 <label htmlFor="">몸무게</label>
                 <input type="text" name="weight" onChange={onChange} /><br />
 
-                <div>이름 : {inputs[`name`]} 키 : {inputs[`height`]} 몸무게 : {inputs[`weight`]} </div>
 
-                <input type="button" onClick={onClick} value="BMI 체크" /><br />
+                <input type="submit" value="BMI 체크" /><br />
 
             </div>
         </form>
-        <div> 결과 : {result}</div>
+        <div> 결과 : <span id = "result-span"></span></div>
     </div>)
 }
