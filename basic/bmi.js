@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from "axios";
 
 export default function Bmi() {
-
+    const proxy = 'http://localhost:5000'
     const [inputs, setInputs] = useState({})
     const { name, height, weight } = inputs
     const [result, setResult] = useState(``)
@@ -17,7 +17,7 @@ export default function Bmi() {
         e.preventDefault()
         setResult(`${name}님의 bmi 지수는 ${(weight *10000/height/height).toFixed(2)}입니다.`)
         alert(`BMI 지수 : ${JSON.stringify(inputs)}`)
-        axios.post('http://localhost:5000/api/basic/write', inputs)
+        axios.post(proxy + '/api/basic/bmi', inputs)
         .then(res => {
             const bmi = res.data     
             document.getElementById(`result-span`).innerHTML = `

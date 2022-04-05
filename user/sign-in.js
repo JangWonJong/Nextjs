@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 
 export default function Login () {
@@ -11,18 +12,17 @@ export default function Login () {
         setInputs({
             ...setInputs, [name]: value})    
     }
-    const handleClick =(e)=> {
+    const handleSubmit = async e => {
         e.preventDefault()
-        const loginRequest = {id, pw}
-        memberLogin(loginRequest)
+        axios.post('http://localhost:5000/api/user/', inputs)        
         .then(res => {
-            alert(res.data)
+            
         })
         .catch(err => console.log(`에러발생 : ${err}`))
     }
         
-    return (
-                    
+    return (<><h1>로그인</h1>
+        <form>         
         <div>
             <label htmlFor=""><b>Username</b></label><br/>
             <input name='id' type="text" placeholder='아이디' onChange={handleChange}/><br/>
@@ -30,8 +30,9 @@ export default function Login () {
             <input name ='pw' type="password" placeholder='비밀번호' onChange={handleChange}/><br/>
             <button onClick={handleClick}>로그인</button><br/>    
                                                    
-        </div>                
-            
+        </div>
+        </form>                
+        </>    
     
 
     )
