@@ -14,18 +14,12 @@ export default function SignUp(){
             ...inputs, [name]: value})    
     }
     const handleSubmit = async e => {
-        e.preventDefault()
-        alert(`${username}님 회원가입을 축하합니다`)
+        e.preventDefault()        
         axios.post('http://localhost:5000/api/user/sign-up', inputs)       
-        .then(res => {            
-            const login = res.data
-            console.log(JSON.stringify(res.data))
-            document.getElementById(`result-span`).innerHTML = `
-            <h3>사용자 ID : ${login.username}</h3>
-            <h3>비밀번호 : ${login.password}</h3>
-            <h3>이름 : ${login.name}</h3>
-            <h3>전화번호 : ${login.telephone}</h3>
-            `
+        .then(res => {         
+            
+            alert(JSON.stringify(res.data))
+            
         })
         .catch(err => (err))
     }  

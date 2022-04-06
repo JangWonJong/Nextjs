@@ -13,9 +13,9 @@ export default function Bmi() {
         setInputs({ ...inputs, [name]: value })
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
         e.preventDefault()
-        setResult(`${name}님의 bmi 지수는 ${(weight *10000/height/height).toFixed(2)}입니다.`)
+        alert(`${name}님의 bmi 지수는 ${(weight *10000/height/height).toFixed(2)}입니다.`)
         alert(`BMI 지수 : ${JSON.stringify(inputs)}`)
         axios.post(proxy + '/api/basic/bmi', inputs)
         .then(res => {
@@ -42,7 +42,7 @@ export default function Bmi() {
 
                 <label htmlFor="">몸무게</label>
                 <input type="text" name="weight" onChange={onChange} /><br />
-
+                                
 
                 <input type="submit" value="BMI 체크" /><br />
 
