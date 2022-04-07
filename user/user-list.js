@@ -24,10 +24,11 @@ const Table = ({columns, colspan, data })  =>{
 export default function UserList(){
     const columns = ['username','password','name','telephone']
     const data = []
+    const count = data.length
     return(<>
        
         <h1>사용자 목록</h1>
-        <h3>회원수 : {data.length} 명</h3>
+        {count !=0 && <h3>회원수: {count} 명</h3>}
         <div className={tableStyles.td}>
         <Table columns={columns} colspan={4} data = {data} ></Table> 
         </div>
