@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 
 export default function SignUp(){
     const [inputs, setInputs] = useState({})
-    const {username, password, name, telephone} = inputs;
+    const {username, password, name, telephone ,dddd} = inputs;
     
     const handleChange = e =>{
         e.preventDefault()
@@ -13,7 +13,7 @@ export default function SignUp(){
         setInputs({
             ...inputs, [name]: value})    
     }
-    const handleSubmit = async e => {
+    const handleSubmit = e => {
         e.preventDefault()        
         axios.post('http://localhost:5000/api/user/sign-up', inputs)       
         .then(res => {         
@@ -42,7 +42,7 @@ export default function SignUp(){
 
     <label><b>전화번호</b></label>
     <input type="text" name='telephone' onChange = {handleChange} /><br />
-    
+            
     <input type="submit" value="가입" ></input>
     
     </div>    
