@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 
 
-export default function SignUp(){
+export default function Join(){
     const [inputs, setInputs] = useState({})
     //const {username, password, name, telephone } = inputs;
     

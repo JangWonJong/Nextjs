@@ -4,7 +4,7 @@ import { HYDRATE } from "next-redux-wrapper"
 const initialState = {}
 
 export const adminSlice = createSlice({
-    name: '',
+    name: 'admin',
     initialState: [],
     reducers:{ },
     extraReducers: {
