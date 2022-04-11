@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 
 export default function SignUp(){
     const [inputs, setInputs] = useState({})
-    const {username, password, name, telephone } = inputs;
+    //const {username, password, name, telephone } = inputs;
     
     const handleChange = e =>{
         e.preventDefault()
