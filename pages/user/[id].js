@@ -13,7 +13,7 @@ export default function Profile(){
          
       })
     },[])
-
+    //수정
     /**useEffect(() => {
         (async () => {
             console.log(`Next ----> /user/profile/${router.query.id}`);
