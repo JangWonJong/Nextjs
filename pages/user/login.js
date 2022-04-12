@@ -22,7 +22,7 @@ export default function Login () {
     }
         
     return (<><h1>로그인</h1>
-        <form>         
+                
         <div>
             <label htmlFor=""><b>Username</b></label><br/>
             <input name='id' type="text" placeholder='아이디' onChange={handleChange}/><br/>
@@ -31,7 +31,7 @@ export default function Login () {
             <button onClick={handleSubmit}>로그인</button><br/>    
                                                    
         </div>
-        </form>                
+                     
         </>    
     
 
