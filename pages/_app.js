@@ -1,12 +1,12 @@
 import {Layout} from "common"
 import Head from "next/head"
+import { PropTypes } from 'prop-types'
 import wrapper from '../redux/store'
 
 
 const  MyApp = ({ Component, pageProps}) => {
   return (
-    <>
-    
+    <>    
     <Head>
       <meta charset="utf-8"/>  
       <meta name="viewport"
