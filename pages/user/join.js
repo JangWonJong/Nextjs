@@ -16,7 +16,7 @@ import _ from '@lodash';
 //import '../user/style/UserRegister.scss'
 //import { CheckList } from '..';
 import { joinRequest } from '../../redux/reducers/user.reducer';
-// 오빠 바보바보바보
+
 /**
  * 생년월일/나이/핸드폰번호 추가하기. 
  * Form Validation Schema
