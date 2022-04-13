@@ -6,7 +6,7 @@ export default function boardNav(){
     
       <ul>
         <li className={styles.li}> <Link href='board'>게시글등록</Link> </li>      
-        <li className={styles.li}> <Link href='boare-list'>게시글목록</Link> </li>      
+        <li className={styles.li}> <Link href='board-list'>게시글목록</Link> </li>      
     
       </ul>
     

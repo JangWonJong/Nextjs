@@ -1,13 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit"
 
+const initialState = []
+
 const todoSlice = createSlice({
     name: 'todos',
     initialState: [],
     reducers:{
-    access(state, action){}
+        addTodo(state, action){
+            alert('리듀서 내부로 들어온 ?'+ action.payload.task)
+            const todo = {id: new Date(), task: action.payload.task, completed: false}
+            state.push(todo)
+        }
     }
 })
 
 const {actions, reducer} = todoSlice
-export const {access} = actions
+export const {addTodo} = todoSlice.actions
 export default reducer

@@ -1,11 +1,49 @@
-import React from 'react';
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import tableStyles from '../common/style/table.module.css'
 
-export default function Todo(){
-    return (
-        <div className="Todo">
-            <input type="checkbox" id="todo0" name="todo0" value="todo0"></input>
-            <label>경기 일정 체크</label>
+
+const Table = ({columns,colspan, data}) =>{
+    return(
+        <table className={tableStyles.table}>
+            <thead>
+            <tr className={tableStyles.tr}>
+            {columns.map((column)=>(               
+                <th className={tableStyles.td} key = {column.todoId}>{column}</th>
+            ))}
+            </tr>
+            </thead>
+            <tbody>
+                {data.length == 0 ? <tr className={tableStyles.tr}>
+                    <td colSpan={colspan} className={tableStyles.td}>NO Schedule</td>
+                </tr>
+                :data.map((todo)=>(
+                    <tr className={tableStyles.tr} key={todo.todoId}>
+                    
+                </tr>
+
+                ))}
+            </tbody>
+        </table>
+        
+    )
+}
+
+export default function TodoList(){
+    const columns = ['해야할 일']
+    const [data, setData] = useState([])
+
+    useEffect(()=>{
+        axios.get('http://localhost:5000/api/todo/list')
+        .then(res=>{
+            setData(res.data.todos)        
+        })
+        .catch(err=>{})
+    },[])
+    return (<>
+        <h1>Schedule List</h1>
+        <div className={tableStyles.td}>
+        <Table columns={columns} colspan={4} data = {data}></Table>
         </div>
-    
-    ) 
+        </>)
 }
