@@ -44,7 +44,7 @@ export default function BoardhtmlForm(){
                 </div>
                 <div className={style.col75}>
                 <input type="text" className={style.inputText}
-                id="title" name="title" onChange={e=>setInputs(e.target.inputs)}/>
+                id="title" name="title" onChange={e=>setInputs({['title']: e.target.title})}/>
                 </div>
             </div>
             
