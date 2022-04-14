@@ -1,5 +1,5 @@
 import axios from "axios";
-import style from "board/style/board-form.module.css"
+import style from "./style/board-form.module.css"
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
 import { addContent, addTeam, addTitle, addWriter } from "../../redux/reducers/board.reducer";

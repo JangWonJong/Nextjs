@@ -1,5 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit"
 
+export interface JoinPayload{
+    data:{
+        user: {
+            userid: string;
+            password: string;
+            email:string;
+            name: string;
+            phone: string;
+            birth: string;
+            address: string;
+        }
+    }
+}
+export interface UserState{
+    userLoading: boolean;
+    userData: any;
+    error: any;
+    token: null;
+}
 
 const initialState = {
     userLoading: false,
@@ -16,5 +35,6 @@ export const userSlice = createSlice({
         joinFailure(state, action){ state.userLoading = false, state.error = action.payload}
     }
 })
-
-export default userSlice.reducer
+const {reducer, actions } = userSlice
+export const { joinRequest, joinSuccess, joinFailure} = actions
+export default reducer
