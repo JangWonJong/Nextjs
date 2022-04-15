@@ -11,7 +11,7 @@ interface TodoFormType{
 interface TodoSuccessType{
     type: string;
     payload: {
-        userid:string
+    userid:string
     }
 }
 
