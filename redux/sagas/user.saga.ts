@@ -1,15 +1,35 @@
 import { PayloadAction } from '@reduxjs/toolkit'
 import {call, delay, put, takeLatest } from 'redux-saga/effects'
-import { JoinPayload, joinSuccess, joinRequest } from '../reducers/userReducer'
-import { joinApi } from '../api/userApi'
+import { userActions} from '../reducers/userReducer.ts'
 
-function* join(action: PayloadAction<JoinPayload>){
+import { postUser } from '../api/userApi.ts'
+
+
+interface UserJoinType{
+    type: string;
+    payload: {
+        userid:string, password: string, email:string, 
+        name:string, phone:string, birth:string, address:string
+    }
+}
+interface UserSuccessType{
+    type: string;
+    payload: {
+    userid:string
+    }
+}
+
+function* join(user: UserJoinType){
     try{
-        alert('*** saga내부 join ***')        
+        alert('*** 진행 3: saga내부 join 성공 ***' + JSON.stringify(user))
+        const response: UserSuccessType = yield postUser(user.payload)       
+        yield put(userActions.joinSuccess(response))
     }catch(error){
-        alert('*** saga 내부 join 실패 ***')
+        alert('*** 진행 3: saga내부 join 실패 ***')
+        yield put(userActions.joinFailure(error))
+
     }
 }
 export function* watchJoin(){
-    yield takeLatest(joinRequest.type, join)
+    yield takeLatest(userActions.joinRequest, join)
 }

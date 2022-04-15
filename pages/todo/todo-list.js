@@ -9,7 +9,7 @@ const Table = ({columns,colspan, data}) =>{
             <thead>
             <tr className={tableStyles.tr}>
             {columns.map((column)=>(               
-                <th className={tableStyles.td} key = {column.todoId}>{column}</th>
+                <th className={tableStyles.td} key = {column.userid}>{column}</th>
             ))}
             </tr>
             </thead>
@@ -18,7 +18,10 @@ const Table = ({columns,colspan, data}) =>{
                     <td colSpan={colspan} className={tableStyles.td}>NO Schedule</td>
                 </tr>
                 :data.map((todo)=>(
-                    <tr className={tableStyles.tr} key={todo.todoId}>
+                    <tr className={tableStyles.tr} key={user.userid}>
+                        <td className={tableStyles.td}>{user.userid}</td>
+                        <td className={tableStyles.td}>{todo.task}</td>
+                        <td className={tableStyles.td}>{todo.completed}</td>
                     
                 </tr>
 
@@ -30,7 +33,7 @@ const Table = ({columns,colspan, data}) =>{
 }
 
 export default function TodoList(){
-    const columns = ['해야할 일']
+    const columns = ['사용자 ID', '해야할 일', '완료']
     const [data, setData] = useState([])
 
     useEffect(()=>{
@@ -43,7 +46,7 @@ export default function TodoList(){
     return (<>
         <h1>Schedule List</h1>
         <div className={tableStyles.td}>
-        <Table columns={columns} colspan={4} data = {data}></Table>
+        <Table columns={columns} colspan={3} data = {data}></Table>
         </div>
         </>)
 }

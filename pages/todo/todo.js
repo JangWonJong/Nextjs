@@ -1,20 +1,27 @@
 import React,{ useState} from "react";
 import {useDispatch} from 'react-redux'
-import { addTodo } from '../../redux/reducers/todo.reducer'
+import { todoActions } from "../../redux/reducers/todo.reducer.ts";
 
-export default function AppTasks() {
-const [value, setValue] = useState('')
+export default function AddTodo() {
+const [todo, setTodo] = useState({userid: '', task: '', completed: ''})
 const dispatch = useDispatch()
+const handleChange = e => {
+  e.preventDefault()
+  const{name, value} = e.target
+  setTodo({...value, [name]: value})
+}
   return (
      <div className="todoapp stack-large">
       <h1>오늘 할일</h1>
       <form onSubmit={ e =>{ 
+        alert('schedule check')
         e.preventDefault()
-        if(value) dispatch(addTodo({task: value}))
+        dispatch(todoActions.todoRequest(todo))
+        setTodo({userid: '', task: '', completed: ''})
        }}>
         <h2 className="label-wrapper">
           <label htmlFor="new-todo-input" className="label__lg">
-            What needs to be done?
+            오늘 일정 입력하기
           </label>
         </h2>
         <input
@@ -23,8 +30,9 @@ const dispatch = useDispatch()
           className="input input__lg"
           name="text"
           autoComplete="off"
-          onChange={e => setValue(e.target.value)}
+          onChange={handleChange}
         />
+      
         <button style={{marginLeft:"20px"}} type="submit" className="btn btn__primary btn__lg">
           Add
         </button>

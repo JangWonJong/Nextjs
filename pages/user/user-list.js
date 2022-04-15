@@ -9,7 +9,7 @@ const Table = ({columns, colspan, data })  =>{
             {/*columns.map((x)=>{x})*/}
             <tr className={tableStyles.tr}>
             {columns.map((column)=>(
-                <th className={tableStyles.td} key = {column.username}>{column}</th>
+                <th className={tableStyles.td} key = {column.userid}>{column}</th>
             ))}
             </tr>
             </thead>
@@ -18,11 +18,13 @@ const Table = ({columns, colspan, data })  =>{
                                     <td colSpan={colspan} className={tableStyles.td}>NO DATA</td>
                                     </tr>
                                     :data.map((user) => (
-                                        <tr className={tableStyles.tr}  key={user.username} >
-                                          <td className={tableStyles.td}>{user.username}</td>
-                                          <td className={tableStyles.td}>{user.password}</td>
+                                        <tr className={tableStyles.tr}  key={user.userid} >
+                                          <td className={tableStyles.td}>{user.userid}</td>
                                           <td className={tableStyles.td}>{user.name}</td>
-                                          <td className={tableStyles.td}>{user.telephone}</td>
+                                          <td className={tableStyles.td}>{user.email}</td>
+                                          <td className={tableStyles.td}>{user.phone}</td>
+                                          <td className={tableStyles.td}>{user.birth}</td>
+                                          <td className={tableStyles.td}>{user.address}</td>
                                         </tr>
 
                                     ))}               
@@ -47,7 +49,7 @@ export default function UserList(){
        
         <h1>사용자 목록</h1>
         <div className={tableStyles.td}>
-        <Table columns={columns} colspan={4} data = {data} ></Table> 
+        <Table columns={columns} colspan={6} data = {data} ></Table> 
         </div>
         </>)
     
