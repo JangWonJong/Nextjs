@@ -4,7 +4,7 @@ export interface BoardType{
     userid: string,
     title: string,
     name: string,
-    team: string,
+    teamId: string,
     subject: string
 }
 

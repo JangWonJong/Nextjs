@@ -7,24 +7,24 @@ const Table = ({columns, colspan, data })  =>{
         <table className={tableStyles.table}>
             <thead>
             {/*columns.map((x)=>{x})*/}
-            <tr className={tableStyles.tr}>
+            <tr>
             {columns.map((column)=>(
-                <th className={tableStyles.td} key = {column.userid}>{column}</th>
+                <th key = {column.userid}>{column}</th>
             ))}
             </tr>
             </thead>
             <tbody>
-                { data.length == 0 ?<tr className={tableStyles.tr}>
-                                    <td colSpan={colspan} className={tableStyles.td}>NO DATA</td>
+                { data.length == 0 ?<tr>
+                                    <td colSpan={colspan}>NO DATA</td>
                                     </tr>
                                     :data.map((user) => (
-                                        <tr className={tableStyles.tr}  key={user.userid} >
-                                          <td className={tableStyles.td}>{user.userid}</td>
-                                          <td className={tableStyles.td}>{user.name}</td>
-                                          <td className={tableStyles.td}>{user.email}</td>
-                                          <td className={tableStyles.td}>{user.phone}</td>
-                                          <td className={tableStyles.td}>{user.birth}</td>
-                                          <td className={tableStyles.td}>{user.address}</td>
+                                        <tr  key={user.userid} >
+                                          <td >{user.userid}</td>
+                                          <td >{user.name}</td>
+                                          <td >{user.email}</td>
+                                          <td >{user.phone}</td>
+                                          <td >{user.birth}</td>
+                                          <td >{user.address}</td>
                                         </tr>
 
                                     ))}               
@@ -48,7 +48,7 @@ export default function UserList(){
     return(<>
        
         <h1>사용자 목록</h1>
-        <div className={tableStyles.td}>
+        <div>
         <Table columns={columns} colspan={6} data = {data} ></Table> 
         </div>
         </>)

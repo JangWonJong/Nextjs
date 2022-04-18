@@ -7,23 +7,23 @@ const Table = ({columns,colspan, data}) =>{
     return(
         <table className={tableStyles.table}>
             <thead>
-            <tr className={tableStyles.tr}>
+            <tr >
             {columns.map((column)=>(               
-                <th className={tableStyles.td} key = {column.userid}>{column}</th>
+                <th key = {column.userid}>{column}</th>
             ))}
             </tr>
             </thead>
             <tbody>
-                {data.length == 0 ? <tr className={tableStyles.tr}>
-                    <td colSpan={colspan} className={tableStyles.td}>NO DATA</td>
+                {data.length == 0 ? <tr>
+                    <td colSpan={colspan}>NO DATA</td>
                 </tr>
                 :data.map((board)=>(
-                    <tr className={tableStyles.tr} key={board.userid}>
-                    <td className={tableStyles.td}>{board.userid}</td>
-                    <td className={tableStyles.td}>{board.title}</td>
-                    <td className={tableStyles.td}>{board.name}</td>
-                    <td className={tableStyles.td}>{board.teamId}</td>
-                    <td className={tableStyles.td}>{board.subject}</td>
+                    <tr key={board.userid} >
+                    <td >{board.userid}</td>
+                    <td >{board.title}</td>
+                    <td >{board.name}</td>
+                    <td >{board.teamId}</td>
+                    <td >{board.subject}</td>
                 </tr>
 
                 ))}
@@ -34,7 +34,7 @@ const Table = ({columns,colspan, data}) =>{
 }
 
 export default function BoardList(){
-    const columns = ['사용자 ID', '글 제목', '작성자 ', '팀 ID', '게시글 내용']
+    const columns = ['사용자 ID', '글 제목', '작성자 ', '팀ID', '게시글 내용']
     const [data, setData] = useState([])
 
     useEffect(()=>{
@@ -46,7 +46,7 @@ export default function BoardList(){
     },[])
     return (<>
         <h1>게시판</h1>
-        <div className={tableStyles.td}>
+        <div>
         <Table columns={columns} colspan={5} data = {data}></Table>
         </div>
         </>)
