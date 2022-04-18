@@ -54,7 +54,7 @@ export default function BoardhtmlForm(){
                 </div>
                 <div className={style.col75}>
                 <input type="text" className={style.inputText}
-                id="name" name="name" onChange={e=>setInputs(e.target.inputs)}/>
+                id="name" name="name" onChange={e=>setInputs({['write']: e.target.write})}/>
                 </div>
             </div>
             <div className={style.row}>
@@ -62,7 +62,7 @@ export default function BoardhtmlForm(){
                 <label htmlFor="team">팀명</label>
                 </div>
                 <div className={style.col75}>
-                <select id="teamId" name="teamId" onChange={e=>setInputs(e.target.inputs)}>
+                <select id="teamId" name="teamId" onChange={e=>setInputs({['team']: e.target.team})}>
                     <option value="K09" >FC 서울</option>
                     <option value="K02" >수원 삼성 블루윙즈</option>
                     <option value="K04" >인천 유나이티드</option>
@@ -74,7 +74,7 @@ export default function BoardhtmlForm(){
                 <label htmlFor="subject">내용</label>
                 </div>
                 <div className={style.col75}>
-                <input type="textarea"  id="subject" name="subject" style={{height:200 + "px"}} onChange={e=>setInputs(e.target.inputs)}></input>
+                <input type="textarea"  id="subject" name="subject" style={{height:200 + "px"}} onChange={e=>setInputs({['content']: e.target.content})}></input>
                 </div>
             </div>
             <br/>

@@ -12,11 +12,9 @@ export default function Nav(){
         <li className={styles.li}> <Link href='/game/game'>경기등록</Link> </li>        
         <li className={styles.li}> <Link href='/game/game-list'>경기리스트</Link> </li>        
         <li className={styles.li}> <Link href='/game/teamnav'>TeamList</Link> </li>
-        <li className={styles.li}> <Link href='/todo/todo'>스케줄등록</Link> </li>
-        <li className={styles.li}> <Link href='/todo/todo-list'>스케줄목록</Link> </li>
-        <li className={styles.li}> <Link href='/user/login'>SignIn</Link> </li>
-        <li className={styles.li}> <Link href='/user/join'>SignUp</Link> </li>
-        <li className={styles.li}> <Link href='/user/user-list'>User List</Link> </li>
+        <li className={styles.li}> <Link href='/todo/todonav'>스케줄</Link> </li>
+        <li className={styles.li}> <Link href='/user/usernav'>사용자 관리</Link> </li>
+
 
       </ul>
     </nav>

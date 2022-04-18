@@ -21,7 +21,7 @@ export const postUser = async(payload:
         name:string, phone:string, birth:string, address:string}) =>{
             try{
                 const response : AxiosResponse<unknown, UserType[]> = await axios.post(`${SERVER}/api/user/sign-up`, payload, {headers})
-                alert('진행 4 : 응답성공 ' + JSON.stringify(response.data))
+                alert('진행 5 : 응답성공 ' + JSON.stringify(response.data))
                 return response.data
             }catch(err){
                 return err

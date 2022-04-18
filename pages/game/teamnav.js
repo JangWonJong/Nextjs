@@ -6,7 +6,7 @@ export default function TeamNav(){
     
       <ul>
         <li className={styles.li}> <Link href='team-form'>팀 정보</Link> </li>      
-        <li className={styles.li}> <Link href='team-list'>TeamList</Link> </li>      
+        <li className={styles.li}> <Link href='getTeams'>TeamList</Link> </li>      
 
     
       </ul>

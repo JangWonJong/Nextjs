@@ -7,8 +7,8 @@ const [todo, setTodo] = useState({userid: '', task: '', completed: ''})
 const dispatch = useDispatch()
 const handleChange = e => {
   e.preventDefault()
-  const{name, value} = e.target
-  setTodo({...value, [name]: value})
+  const{name, value} = e.target;
+  setTodo({...todo, [name]: value})
 }
   return (
      <div className="todoapp stack-large">
@@ -19,19 +19,14 @@ const handleChange = e => {
         dispatch(todoActions.todoRequest(todo))
         setTodo({userid: '', task: '', completed: ''})
        }}>
-        <h2 className="label-wrapper">
-          <label htmlFor="new-todo-input" className="label__lg">
-            오늘 일정 입력하기
-          </label>
-        </h2>
-        <input
-          type="text"
-          id="new-todo-input"
-          className="input input__lg"
-          name="text"
-          autoComplete="off"
-          onChange={handleChange}
-        />
+       <label htmlFor=""><b>사용자ID</b></label>
+       <input type="text" name='userid' onChange={handleChange}/><br />
+   
+       <label htmlFor=""><b>할일</b></label>
+       <input type="text" name='task' onChange={handleChange}/><br />
+   
+       <label htmlFor=""><b>확인</b></label>
+       <input type="text" name='completed' onChange={handleChange}/><br />
       
         <button style={{marginLeft:"20px"}} type="submit" className="btn btn__primary btn__lg">
           Add
