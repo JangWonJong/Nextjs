@@ -9,7 +9,7 @@ const Table = ({columns,colspan, data}) =>{
             <thead>
             <tr className={tableStyles.tr}>
             {columns.map((column)=>(               
-                <th className={tableStyles.td} key = {column.passengerId}>{column}</th>
+                <th className={tableStyles.td} key = {column.userid}>{column}</th>
             ))}
             </tr>
             </thead>
@@ -18,8 +18,9 @@ const Table = ({columns,colspan, data}) =>{
                     <td colSpan={colspan} className={tableStyles.td}>NO DATA</td>
                 </tr>
                 :data.map((board)=>(
-                    <tr className={tableStyles.tr} key={board.passengerId}>
-                    <td className={tableStyles.td}>{board.passengerId}</td>
+                    <tr className={tableStyles.tr} key={board.userid}>
+                    <td className={tableStyles.td}>{board.userid}</td>
+                    <td className={tableStyles.td}>{board.title}</td>
                     <td className={tableStyles.td}>{board.name}</td>
                     <td className={tableStyles.td}>{board.teamId}</td>
                     <td className={tableStyles.td}>{board.subject}</td>
@@ -33,7 +34,7 @@ const Table = ({columns,colspan, data}) =>{
 }
 
 export default function BoardList(){
-    const columns = ['passengerId','name','teamId','subject']
+    const columns = ['사용자 ID', '글 제목', '작성자 ', '팀 ID', '게시글 내용']
     const [data, setData] = useState([])
 
     useEffect(()=>{
@@ -46,7 +47,7 @@ export default function BoardList(){
     return (<>
         <h1>게시판</h1>
         <div className={tableStyles.td}>
-        <Table columns={columns} colspan={4} data = {data}></Table>
+        <Table columns={columns} colspan={5} data = {data}></Table>
         </div>
         </>)
 }
