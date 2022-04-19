@@ -5,7 +5,7 @@
     "include": [
       "pages/**/*.js",
       "redux/**/*.ts"
-    ],
+, "pages/todo/addTodo3js"    ],
     "exclude": [
       "node_modules",
       "**/*.spec.ts"
