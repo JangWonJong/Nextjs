@@ -38,7 +38,7 @@ export default function BoardList(){
     const [data, setData] = useState([])
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/api/board/list')
+        axios.get('http://localhost:5000/board/list')
         .then(res=>{
             setData(res.data.boards)        
         })
