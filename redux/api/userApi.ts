@@ -60,6 +60,7 @@ export const loginApi = async (payload : {
 export const logoutApi = async () => {
     try {
         const response: AxiosResponse<unknown, UserType[]> = await axios.get(`${SERVER}/user/logout`, {headers})
+        return response.data
     }catch(err){
         return err
     }

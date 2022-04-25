@@ -45,6 +45,7 @@ function* join(user: UserJoinType){
         alert('*** 진행 3: saga내부 join 성공 ***' + JSON.stringify(user))
         const response: UserJoinSuccessType = yield postUser(user.payload)       
         yield put(userActions.joinSuccess(response))
+        window.location.href = '/user/login'
     }catch(error){
         alert('*** 진행 3: saga내부 join 실패 ***')
         yield put(userActions.joinFailure(error))
@@ -56,7 +57,7 @@ function* login(login: UserLoginType){
         alert('*** 진행 3: saga내부 login 요청 ***' + JSON.stringify(login))
         const response: UserLoginSuccessType = yield loginApi(login.payload)       
         yield put(userActions.loginSuccess(response))
-        window.location.href = '/'
+        //window.location.href = '/'
     }catch(error){
         alert('*** 진행 3: saga내부 login 실패 ***')
         yield put(userActions.loginFailure(error))
@@ -79,5 +80,5 @@ export function* watchLogin(){
     yield takeLatest(userActions.loginRequest, login)
 }
 export function* watchLogout(){
-    yield takeLatest(userActions.loginRequest, logout)
+    yield takeLatest(userActions.logoutRequest, logout)
 }
