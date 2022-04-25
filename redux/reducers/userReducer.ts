@@ -13,13 +13,39 @@ export interface UserType{
 export interface UserState{
     loading: boolean;
     data: UserType[];
+    loginUser: any;
     error: any;
 }
 
 const initialState: UserState= {
     loading: false,
     data: [],
+    loginUser: {
+        userid: '',
+        password: '',  
+        email: '',
+        name: '',  
+        phone: '',
+        birth: '',
+        address: ''
+    },
     error: null
+}
+export interface loginSuccessType {
+    data: {
+        token: string
+    }
+    config: {
+        data: {
+            userid: string;
+            name: string;
+            email: string;
+            phone: string;
+            address: string;
+            password: string;
+            birth: string;
+        }
+    }
 }
 
 export const userSlice = createSlice({
@@ -42,13 +68,23 @@ export const userSlice = createSlice({
         alert(' 진행 2 : 리듀서 내부 ')
             state.loading = true;},
         
-            loginSuccess(state: UserState, {payload}){ 
-            state.data = [...state.data, payload]
+            loginSuccess(state: UserState, action: PayloadAction<loginSuccessType>){ 
+            state.loginUser = action.payload['user']
             state.loading = false;},
         
             loginFailure(state: UserState, {payload}){ 
             state.data = payload
-            state.loading = false;}
+            state.loading = false;
+            window.location.href = '/user/login'
+        },
+        logoutRequest(state: UserState, payload){
+            state.loading = false
+        },
+        logoutSuccess(state: UserState){
+            state.loading = false
+            localStorage.clear()
+            window.location.href = '/'
+        }
     }
 })
 const {reducer, actions } = userSlice

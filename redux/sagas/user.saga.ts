@@ -2,7 +2,7 @@ import { PayloadAction } from '@reduxjs/toolkit'
 import {call, delay, put, takeLatest } from 'redux-saga/effects'
 import { userActions} from '../reducers/userReducer.ts'
 
-import { postUser, loginApi } from '../api/userApi.ts'
+import { postUser, loginApi, logoutApi } from '../api/userApi.ts'
 
 
 interface UserJoinType{
@@ -15,17 +15,23 @@ interface UserJoinType{
 interface UserLoginType{
     type: string;
     payload: {
-        userid:string, password: string, email:string, 
-        name:string, phone:string, birth:string, address:string
+        userid:string, password: string
+        
+    }
+}
+interface UserLogoutTupe{
+    type: string
+    payload: {
+        userid: string
+    }
+}
+interface UserJoinSuccessType{
+    type: string
+    payload: {
+        userid: string
     }
 }
 
-interface UserSuccessType{
-    type: string;
-    payload: {
-        userid:string, password: string
-    }
-}
 interface UserLoginSuccessType{
     type: string;
     payload: {
@@ -37,7 +43,7 @@ interface UserLoginSuccessType{
 function* join(user: UserJoinType){
     try{
         alert('*** 진행 3: saga내부 join 성공 ***' + JSON.stringify(user))
-        const response: UserSuccessType = yield postUser(user.payload)       
+        const response: UserJoinSuccessType = yield postUser(user.payload)       
         yield put(userActions.joinSuccess(response))
     }catch(error){
         alert('*** 진행 3: saga내부 join 실패 ***')
@@ -58,9 +64,20 @@ function* login(login: UserLoginType){
 
     }
 }
+function* logout(logout: UserLogoutTupe){
+    try{
+        const response: UserLoginSuccessType = yield logoutApi()
+        yield put(userActions.logoutSuccess(response))
+    }catch(error){
+
+    }
+}
 export function* watchJoin(){
     yield takeLatest(userActions.joinRequest, join)
 }
 export function* watchLogin(){
     yield takeLatest(userActions.loginRequest, login)
+}
+export function* watchLogout(){
+    yield takeLatest(userActions.loginRequest, logout)
 }
