@@ -19,7 +19,7 @@ interface UserLoginType{
         
     }
 }
-interface UserLogoutTupe{
+interface UserLogoutType{
     type: string
     payload: {
         userid: string
@@ -65,7 +65,7 @@ function* login(login: UserLoginType){
 
     }
 }
-function* logout(logout: UserLogoutTupe){
+function* logout(logout: UserLogoutType){
     try{
         const response: UserLoginSuccessType = yield logoutApi()
         yield put(userActions.logoutSuccess(response))

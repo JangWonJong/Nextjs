@@ -70,8 +70,8 @@ export const userSlice = createSlice({
         
             loginSuccess(state: UserState, action: PayloadAction<loginSuccessType>){ 
             state.loginUser = action.payload['user']
-            state.loading = false;},
-        
+            state.loading = false;
+            window.location.href = '/'},
             loginFailure(state: UserState, {payload}){ 
             state.data = payload
             state.loading = false;

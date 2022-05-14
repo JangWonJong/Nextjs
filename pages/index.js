@@ -1,7 +1,7 @@
 import axios from "axios"
 import React, {useEffect} from 'react'
 import table from './common/style/table.module.css'
-
+import Image from 'next/image'
 export default function Home() {
     useEffect(() => {
         const loginUser = localStorage.getItem("loginUser")
@@ -36,6 +36,7 @@ export default function Home() {
                 <tr >
                     <td>
                         <div id="timeZone"></div>
+                        <Image src={"/images/기욤.gif"} width={500} height={300} alt=""></Image>
                     </td>
                 </tr>
             </tbody>
